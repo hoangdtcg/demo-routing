@@ -46,6 +46,7 @@ Route::prefix('users')->group(function (){
 });
 Route::prefix('customers')->group(function (){
     Route::get('/',[CustomerController::class,'index'])->name('customers.list');
+    Route::get('profile/{id}',[CustomerController::class,'showProfile'])->name('customers.profile')->middleware('checkCity');
 });
 //Route::get('/products','HomeController@index');
 //CRUD

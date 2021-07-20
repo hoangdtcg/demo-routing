@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Repositories\CustomerModel;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
+    protected $customerModel;
+    public function __construct(CustomerModel $customerModel)
+    {
+        $this->customerModel = $customerModel;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,7 @@ class CustomerController extends Controller
     public function index()
     {
         //
-        $customers = Customer::all();
+        $customers = $this->customerModel->getPostById();
 //        dd($customer);
         return view('customer.list',compact('customers'));
     }
@@ -85,5 +93,12 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showProfile($id)
+    {
+        $customer = DB::table('customers')->where('customerNumber', $id)->get();
+//        dd($customer);
+        return view('customer.profile',compact('customer'));
     }
 }
