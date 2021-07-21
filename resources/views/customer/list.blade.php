@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('master')
 @section('title','Danh sách khách hàng')
 @section('content')
 <table class="table">

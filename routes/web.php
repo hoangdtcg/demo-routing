@@ -48,6 +48,10 @@ Route::prefix('customers')->group(function (){
     Route::get('/',[CustomerController::class,'index'])->name('customers.list');
     Route::get('profile/{id}',[CustomerController::class,'showProfile'])->name('customers.profile')->middleware('checkCity');
 });
+
+Route::get('demo',function (){
+    return view("backend.customer.list");
+});
 //Route::get('/products','HomeController@index');
 //CRUD
 //GET

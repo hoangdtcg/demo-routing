@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('master')
 @section('title')
     {{$customer[0]->contactFirstName}}
 @endsection
